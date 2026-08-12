@@ -1,0 +1,32 @@
+// Last updated: 8/12/2026, 8:46:29 AM
+class Solution {
+    public int thirdMax(int[] nums) {
+        Long first = null;
+        Long second = null;
+        Long third = null;
+
+        for(int num : nums) {
+            long n = num;
+
+            // skip duplicates
+            if((first != null && first == n) ||
+                (second != null && second == n) ||
+                (third != null && third == n)) {
+                continue;
+            }
+
+            if(first == null || n > first) {
+                third = second;
+                second = first;
+                first = n;
+            } else if(second == null || n > second) {
+                third = second;
+                second = n;
+            } else if(third == null || n > third) {
+                third = n;
+            }
+        }
+
+        return third == null ? first.intValue() : third.intValue();
+    }
+} 
