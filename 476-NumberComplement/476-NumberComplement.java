@@ -1,0 +1,12 @@
+// Last updated: 8/12/2026, 8:46:13 AM
+class Solution {
+    public int findComplement(int num) {
+        int i=0,j=0;
+        while(i<num){
+            i+=Math.pow(2,j);
+            j++;
+        }
+        return i-num;
+
+    }
+}
